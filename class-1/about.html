@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about me </title>
+    <link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css ">
+    
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    
+    <script src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js "></script>
+    <style>
+        /* ===== General Reset and Body ===== */
+body {
+    background: linear-gradient(to bottom, #fff, #90caf9 90%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* ===== Card Grid Layout ===== */
+.about-me {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin: 40px auto 0 auto;
+    max-width: 1200px;
+}
+
+/* ===== Card Styling ===== */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+    width: 18rem;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18);
+}
+.card-img-top {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+.card-body {
+    padding: 18px 14px 14px 14px;
+    text-align: center;
+}
+.card-title {
+    font-size: 20px;
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+.card .btn, .card .sbtn {
+    display: inline-block;
+    background-color: #1976d2;
+    color: white;
+    padding: 8px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.card .btn:hover, .card .sbtn:hover {
+    background-color: #1565c0;
+}
+
+/* ===== Hire Me Section ===== */
+.hire-me section {
+    background: #f9f9f9;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    box-shadow: 0 2px 12px rgba(25, 118, 210, 0.06);
+}
+.hire-me h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #1976d2;
+}
+.hire-me ul {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #555;
+    padding-left: 18px;
+}
+.hire-me p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #444;
+}
+
+/* ===== Footer Styling ===== */
+footer {
+    background: #1976d2;
+    color: #fff;
+    padding: 30px 20px 18px 20px;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+    margin-top: 40px;
+    box-shadow: 0 -2px 12px rgba(25, 118, 210, 0.08);
+}
+footer p {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+footer ul li {
+    display: inline;
+}
+footer ul li a {
+    color: #bbdefb;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+footer ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+footer .social-media {
+    margin-top: 10px;
+}
+footer .social-media a {
+    display: inline-block;
+    margin: 0 8px;
+    transition: transform 0.2s;
+}
+footer .social-media a:hover {
+    transform: scale(1.15);
+}
+footer .social-media img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+}
+
+nav :active {
+    background-color: yellowgreen;
+    color: darkviolet;
+}
+
+nav a :hover {
+    background-color: thistle;
+    color: darkgray;
+}
+
+nav {
+    background-color: black;
+    
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">home</a></li>
+            <li><a class="active" href="about.html">about</a></li>
+            <li><a href="contact.html">contact us</a></li>
+            <li><a href="galary.html">galary</a></li>
+            <li><a href="login.html">login</a></li>
+        </ul>
+    </nav>
+    <h1>my skills:</h1>
+    
+    <div class="about-me">
+        <div class="card" style="width: 18rem;">
+            <img src="https://yt3.googleusercontent.com/ytc/AIdro_n4k0wKZLq25_sCfof3HIOR_Bm0YAhiXfdYwXfG-96OHA=s900-c-k-c0x00ffffff-no-rj"
+                width="225" class="card-img-top" alt="not available">
+            <div class="card-body">
+                <h5 class="card-title">block based <code>code</code> in code.org </h5>
+                <p class="card-text">I have practiced 1 year in this platform. I have created 100 + projects in this website
+                </p>
+                <a href="https://studio.code.org/projects" class="btn btn-primary"> some projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZrW48yKg4ioWfgFPN1liU_Cv7tkyBKUTLBA&s"
+                width="225" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">block-based code in scratch</h5>
+                <p class="card-text">I have worked 5 months in this website. I have created 50+ projects in this platform
+                </p>
+                <a href="https://scratch.mit.edu/mystuff/" class="btn btn-primary">some projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTysI6tQs62DJ5f3bANwqlpKpU6fgjujV7ZmA&s"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">block-based code in machine leanring for kids</h5>
+                <p class="card-text">I have worked 6 months in this website. I have created 200+ projects in this platform
+                </p>
+                <a href="https://machinelearningforkids.co.uk/#!/projects" class="btn btn-primary">some projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://us1.discourse-cdn.com/flex015/uploads/thunkable/original/3X/0/f/0f59f292712368bce16ff80133ae10de8a6f27e8.png"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">block-based code in thunkable</h5>
+                <p class="card-text">I have worked 1 year in this website. I have created 150+ projects in this platform</p>
+                <a href="https://x.thunkable.com/projectPage/67bee3248a1dff5a1b30bb0b" class="sbtn btn-primary">some
+                    projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEc9A_S6BPxCDRp5WjMFEfXrpCu1ya2OO-Lw&s"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">type-based code in HTML</h5>
+                <p class="card-text">I have worked 5 months. I have created 50+ projects in this platform</p>
+                <a href="https://x.thunkable.com/projectPage/67bee3248a1dff5a1b30bb0b" class="sbtn btn-primary">some
+                    projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">type-based code in CSS</h5>
+                <p class="card-text">I have worked 3 year. I have created 50+ projects in this platform</p>
+                <a href="http://127.0.0.1:5501/indian%20cuisines.html" class="sbtn btn-primary">some
+                    projects</a>
+            </div>
+        </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Symbol.png" class="card-img-top"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">type-based code in javascript</h5>
+                <p class="card-text">I am learning this now. I have created 50+ projects in this platform</p>
+                <a href="http://127.0.0.1:5500/class-1(introduction%20to%20javascript)/activity-2.html"
+                    class="sbtn btn-primary">some
+                    projects</a>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="hire-me">
+        <section
+            style="padding: 40px; background-color: #f9f9f9; border-radius: 12px; max-width: 800px; margin: 40px auto; font-family: Arial, sans-serif;">
+            <h2 style="font-size: 28px; margin-bottom: 20px; color: #333;">💼 Why Hire Me?</h2>
+            <ul style="line-height: 1.8; font-size: 16px; color: #555;">
+                <li><strong>🧠 Quick Learner:</strong> I quickly adapt to new technologies, shown by my work in Code.org,
+                    Scratch, HTML, CSS, JavaScript, and more.</li>
+                <li><strong>💡 Creative Problem Solver:</strong> With 600+ projects across platforms, I’ve built, debugged,
+                    and
+                    improved a wide range of applications.</li>
+                <li><strong>💪 Self-Motivated:</strong> I’ve taught myself programming and built projects without needing
+                    formal
+                    supervision or a structured course.</li>
+                <li><strong>🌍 Adaptable & Collaborative:</strong> I work well both independently and in teams, always eager
+                    to
+                    learn and contribute.</li>
+                <li><strong>🚀 Future-Ready:</strong> I’m not just learning to code—I’m learning to think like a developer
+                    and
+                    build for tomorrow.</li>
+            </ul>
+            <p style="margin-top: 20px; font-size: 16px; color: #444;">
+                If you're looking for someone who’s passionate, committed, and ready to grow, I’d love to be a part of your
+                next
+                project or team!
+            </p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="contact.html">contact us</a></li>
+        </ul>
+        <div class="social-media">
+            <a href=""><img src="" alt=""></a>
+            <a href="https://th.bing.com/th/id/OIP.JCI8klaaA1w4LCtljpeJoAHaHa?w=179&h=180&c=7&r=0&o=5&cb=iwc2&dpr=1.3&pid=1.7"><img src="" alt=""></a>
+            <a href="https://th.bing.com/th/id/OIP.g-PMKXEGdnEU8sBg9_X8uwHaHa?w=174&h=180&c=7&r=0&o=5&cb=iwc2&dpr=1.3&pid=1.7"><img src="" alt=""></a>
+        </div>
+</body>
+</html>
