@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mount Carmel Restaurant - Login</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .intro {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(44, 62, 80, 0.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 320px;
+            gap: 1.2rem;
+        }
+
+        .login-container h2 {
+            margin-bottom: 1rem;
+            color: #2d4059;
+            font-weight: 600;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d9e6;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+
+        .login-container input:focus {
+            border-color: #5c7aea;
+            outline: none;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #5c7aea;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-container button:hover {
+            background: #3b4cca;
+        }
+
+        .signup-text {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-top: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.01em;
+}
+
+.signup-text a {
+    color: #4f8cff;
+    text-decoration: underline;
+    font-weight: 600;
+    padding-left: 0.2em;
+    transition: color 0.2s;
+}
+
+.signup-text a:hover {
+    color: #217dbb;
+    text-decoration: underline;
+}
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>The Mount Carmel Restaurant</h1>
+        <p class="intro">A taste of tradition, served with love.</p>
+    </header>
+    <main>
+        <div id="login-container" class="login-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input id="login-username" type="text" placeholder="Master Username" required>
+                <input id="login-password" type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="signup-text">
+                    Don't have an account? <a href="signup.html">Create one / Sign up</a>    </p>
+            </form>
+        </div>
+
+        
+    </main>
+    <footer>
+        <p>build with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Login logic
+        document.getElementById('login-form').onsubmit = function (e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const storedUser = localStorage.getItem('mc_username');
+            const storedPass = localStorage.getItem('mc_password');
+            if (username === storedUser && password === storedPass) {
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid username or password.');
+            }
+        };
+    </script>
+</body>
+
+</html>

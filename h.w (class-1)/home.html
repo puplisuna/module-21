@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mount Carmel Hill Restaurant - Home</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-letter {
+            background: #fff;
+            max-width: 600px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+            font-size: 1.1rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .info-section {
+            background: #f8fafc;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            color: #2d4059;
+        }
+
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #5c7aea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+
+            .welcome-letter,
+            .info-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Welcome to Mount Carmel Hill Restaurant</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">A place where tradition meets taste, and every meal is a memory.</p>
+    </header>
+    <section class="welcome-letter">
+        <p>
+            Dear Guest,<br><br>
+            Welcome to Mount Carmel Hill Restaurant! We are delighted to have you with us. Our passion is to serve you
+            the finest dishes in a cozy, serene environment inspired by the beauty of the hills. Whether you are here
+            for a family dinner, a friendly gathering, or a quiet meal, we promise a memorable culinary experience with
+            every visit.<br><br>
+            Enjoy your time and let us take care of the rest!
+        </p>
+    </section>
+    <section class="info-section">
+        <h2>About Our Restaurant</h2>
+        <p>
+            Mount Carmel Hill Restaurant is known for its warm hospitality, fresh ingredients, and a menu that
+            celebrates both local and international flavors. Our chefs craft each dish with care, ensuring a delightful
+            experience for every guest. We invite you to explore our menu, enjoy our food gallery, and feel free to
+            contact us for reservations or special requests.
+        </p>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
