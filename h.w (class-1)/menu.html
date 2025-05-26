@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Mount Carmel Hill Restaurant</title>
+    <style>
+        :root {
+            --primary: #f6f8fa;
+            --secondary: #2d4059;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--secondary);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--secondary);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #fff;
+            color: var(--secondary);
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-section {
+            background: #fff;
+            max-width: 900px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        .menu-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .menu-category h2 {
+            color: #5c7aea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e3eafc;
+            padding-bottom: 0.3rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .menu-item {
+            background: var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+            padding: 1rem 1rem 0.7rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 120px;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.97rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            font-weight: 500;
+            color: #5c7aea;
+            margin-top: auto;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+            .menu-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Our Menu</h1>
+        <p style="color:#4b5563;font-size:1.1rem;">Explore our delicious and diverse offerings, crafted with love and
+            tradition.</p>
+    </header>
+    <section class="menu-section">
+        <div class="category-list" id="category-list">
+            <!-- Categories will be injected by JS -->
+        </div>
+        <div id="menu-content">
+            <!-- Menu items will be injected by JS -->
+        </div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Demo menu data (50+ items, categorized)
+        const menuData = [
+            {
+                category: "Starters",
+                items: [
+                    { name: "Tomato Basil Soup", desc: "Fresh tomatoes, basil, and cream.", price: "₹120" },
+                    { name: "Crispy Veg Spring Rolls", desc: "Stuffed with fresh veggies.", price: "₹140" },
+                    { name: "Paneer Tikka", desc: "Grilled cottage cheese with spices.", price: "₹180" },
+                    { name: "Chicken Lollipop", desc: "Spicy fried chicken wings.", price: "₹200" },
+                    { name: "Garlic Bread", desc: "Toasted bread with garlic butter.", price: "₹90" },
+                    { name: "Fish Fingers", desc: "Crispy fried fish sticks.", price: "₹220" },
+                ]
+            },
+            {
+                category: "Salads",
+                items: [
+                    { name: "Greek Salad", desc: "Feta, olives, cucumber, tomato.", price: "₹150" },
+                    { name: "Caesar Salad", desc: "Romaine, parmesan, croutons.", price: "₹160" },
+                    { name: "Sprout Salad", desc: "Healthy mixed sprouts.", price: "₹110" },
+                    { name: "Chicken Salad", desc: "Grilled chicken, greens, vinaigrette.", price: "₹180" },
+                ]
+            },
+            {
+                category: "Main Course - Veg",
+                items: [
+                    { name: "Paneer Butter Masala", desc: "Cottage cheese in creamy tomato gravy.", price: "₹220" },
+                    { name: "Dal Makhani", desc: "Slow-cooked black lentils.", price: "₹180" },
+                    { name: "Veg Biryani", desc: "Aromatic rice with mixed veggies.", price: "₹200" },
+                    { name: "Aloo Gobi", desc: "Potato and cauliflower curry.", price: "₹160" },
+                    { name: "Mushroom Masala", desc: "Mushrooms in spicy gravy.", price: "₹190" },
+                    { name: "Mix Veg Curry", desc: "Seasonal vegetables in curry.", price: "₹170" },
+                    { name: "Chana Masala", desc: "Chickpeas in tangy gravy.", price: "₹160" },
+                ]
+            },
+            {
+                category: "Main Course - Non Veg",
+                items: [
+                    { name: "Butter Chicken", desc: "Classic creamy chicken curry.", price: "₹260" },
+                    { name: "Chicken Biryani", desc: "Fragrant rice with chicken.", price: "₹240" },
+                    { name: "Fish Curry", desc: "Fish cooked in coconut gravy.", price: "₹280" },
+                    { name: "Egg Curry", desc: "Boiled eggs in spicy gravy.", price: "₹170" },
+                    { name: "Mutton Rogan Josh", desc: "Kashmiri style mutton curry.", price: "₹320" },
+                    { name: "Chicken Korma", desc: "Chicken in creamy sauce.", price: "₹250" },
+                ]
+            },
+            {
+                category: "Rice & Breads",
+                items: [
+                    { name: "Steamed Rice", desc: "Simple and fluffy.", price: "₹90" },
+                    { name: "Jeera Rice", desc: "Rice with cumin seeds.", price: "₹110" },
+                    { name: "Butter Naan", desc: "Soft Indian bread.", price: "₹50" },
+                    { name: "Garlic Naan", desc: "Naan with garlic topping.", price: "₹60" },
+                    { name: "Tandoori Roti", desc: "Whole wheat bread.", price: "₹40" },
+                    { name: "Lachha Paratha", desc: "Layered flaky bread.", price: "₹55" },
+                ]
+            },
+            {
+                category: "Chinese",
+                items: [
+                    { name: "Veg Hakka Noodles", desc: "Stir-fried noodles with veggies.", price: "₹160" },
+                    { name: "Chicken Fried Rice", desc: "Rice with chicken and veggies.", price: "₹180" },
+                    { name: "Chilli Paneer", desc: "Paneer tossed in spicy sauce.", price: "₹190" },
+                    { name: "Veg Manchurian", desc: "Veg balls in tangy sauce.", price: "₹170" },
+                    { name: "Chicken Manchurian", desc: "Chicken balls in sauce.", price: "₹200" },
+                    { name: "Spring Roll", desc: "Crispy rolls with veggies.", price: "₹140" },
+                ]
+            },
+            {
+                category: "Snacks",
+                items: [
+                    { name: "French Fries", desc: "Crispy golden fries.", price: "₹90" },
+                    { name: "Samosa", desc: "Spiced potato filling.", price: "₹40" },
+                    { name: "Veg Sandwich", desc: "Fresh veggies and cheese.", price: "₹80" },
+                    { name: "Chicken Sandwich", desc: "Chicken and mayo.", price: "₹110" },
+                    { name: "Pav Bhaji", desc: "Spicy mashed veggies with bread.", price: "₹120" },
+                ]
+            },
+            {
+                category: "Desserts",
+                items: [
+                    { name: "Gulab Jamun", desc: "Soft sweet dumplings.", price: "₹70" },
+                    { name: "Rasmalai", desc: "Cottage cheese in sweet milk.", price: "₹90" },
+                    { name: "Ice Cream (2 scoops)", desc: "Choice of vanilla, chocolate, strawberry.", price: "₹80" },
+                    { name: "Brownie with Ice Cream", desc: "Warm brownie, vanilla ice cream.", price: "₹120" },
+                    { name: "Fruit Salad", desc: "Seasonal fruits.", price: "₹70" },
+                ]
+            },
+            {
+                category: "Beverages",
+                items: [
+                    { name: "Masala Chai", desc: "Spiced Indian tea.", price: "₹40" },
+                    { name: "Cold Coffee", desc: "Chilled coffee with ice cream.", price: "₹70" },
+                    { name: "Fresh Lime Soda", desc: "Sweet or salted.", price: "₹50" },
+                    { name: "Mango Lassi", desc: "Sweet mango yogurt drink.", price: "₹60" },
+                    { name: "Mineral Water", desc: "500ml bottle.", price: "₹20" },
+                    { name: "Soft Drinks", desc: "Choice of Coke, Sprite, etc.", price: "₹40" },
+                ]
+            }
+        ];
+
+        // Render categories
+        const categories = menuData.map(cat => cat.category);
+        const categoryList = document.getElementById('category-list');
+        categories.forEach((cat, idx) => {
+            const btn = document.createElement('button');
+            btn.textContent = cat;
+            btn.className = 'category-btn' + (idx === 0 ? ' active' : '');
+            btn.onclick = () => showCategory(cat, btn);
+            categoryList.appendChild(btn);
+        });
+
+        // Render menu items for a category
+        function showCategory(category, btn) {
+            // Set active button
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            // Find category data
+            const catData = menuData.find(c => c.category === category);
+            const menuContent = document.getElementById('menu-content');
+            menuContent.innerHTML = `
+                <div class="menu-category">
+                    <h2>${catData.category}</h2>
+                    <div class="menu-items">
+                        ${catData.items.map(item => `
+                            <div class="menu-item">
+                                <div class="menu-item-name">${item.name}</div>
+                                <div class="menu-item-desc">${item.desc}</div>
+                                <div class="menu-item-price">${item.price}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show first category by default
+        showCategory(categories[0], categoryList.querySelector('.category-btn'));
+    </script>
+</body>
+
+</html>

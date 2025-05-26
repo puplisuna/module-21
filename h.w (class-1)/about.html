@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Mount Carmel Hill Restaurant</title>
+    <style>
+        :root {
+            --primary: #e3eafc;
+            --secondary: #2d4059;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--secondary);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--secondary);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #fff;
+            color: var(--secondary);
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-section {
+            background: #fff;
+            max-width: 700px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+        }
+
+        .about-photos {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .about-photos img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+            background: #e3eafc;
+        }
+
+        .awards-list {
+            margin: 1.5rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .awards-list li {
+            margin-bottom: 0.7rem;
+            color: var(--secondary);
+        }
+
+        .success-story {
+            background: var(--primary);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .award-highlight {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .btn-award {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-award:hover {
+            background: #1b2533;
+        }
+
+        #random-award {
+            margin-top: 1.2rem;
+            color: var(--secondary);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+            .about-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-photos img {
+                width: 100px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>About Mount Carmel Hill Restaurant</h1>
+        <p style="color:#4b5563;font-size:1.1rem;">A journey of taste, tradition, and triumph.</p>
+    </header>
+    <section class="about-section">
+        <div class="about-photos">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+                alt="Restaurant Interior">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80"
+                alt="Award Ceremony">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Dbb-sGQeV3qumHK3ePhwR_ylsRKA78qJhw&scaled=1200&h=800"
+                alt="Chef at Work">
+        </div>
+        <h2 style="color:var(--secondary);">Our Awards</h2>
+        <ul class="awards-list" id="awards-list">
+            <li><span class="award-highlight">Best Family Restaurant</span> - 2022</li>
+            <li><span class="award-highlight">Culinary Excellence Award</span> - 2023</li>
+            <li><span class="award-highlight">Top Rated Ambience</span> - 2023</li>
+            <li><span class="award-highlight">Customer Choice Award</span> - 2024</li>
+        </ul>
+        <button class="btn-award" onclick="showRandomAward()">Show Random Award</button>
+        <div id="random-award"></div>
+        <div class="success-story" id="success-story">
+            <strong>Success Story:</strong><br>
+            From a humble beginning on the hillside, Mount Carmel Hill Restaurant has grown into a beloved destination
+            for food lovers. Our dedication to quality and hospitality has earned us recognition and the hearts of our
+            guests. Every award is a testament to our team's passion and your support!
+        </div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript to show a random award from the list
+        function showRandomAward() {
+            const awards = [
+                "Best Family Restaurant - 2022",
+                "Culinary Excellence Award - 2023",
+                "Top Rated Ambience - 2023",
+                "Customer Choice Award - 2024"
+            ];
+            const random = awards[Math.floor(Math.random() * awards.length)];
+            document.getElementById('random-award').textContent = "🏆 " + random;
+        }
+    </script>
+</body>
+
+</html>

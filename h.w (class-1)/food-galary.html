@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Gallery - Mount Carmel Hill Restaurant</title>
+    <style>
+        :root {
+            --primary: #f6f8fa;
+            --secondary: #2d4059;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--secondary);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--secondary);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #fff;
+            color: var(--secondary);
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-section {
+            background: #fff;
+            max-width: 1100px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background: var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 220px;
+        }
+
+        .gallery-item img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 0.7rem;
+            background: #e3eafc;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+        }
+
+        .gallery-item-name {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.2rem;
+            text-align: center;
+        }
+
+        .gallery-item-category {
+            font-size: 0.95rem;
+            color: #5c7aea;
+            text-align: center;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+            .gallery-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .gallery-item img {
+                width: 100px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html" class="active">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Food Gallery</h1>
+        <p style="color:#4b5563;font-size:1.1rem;">A visual treat of our delicious menu items.</p>
+    </header>
+    <section class="gallery-section">
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Gallery items will be injected by JS -->
+        </div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Each image is chosen to match the food type as closely as possible
+        const menuGallery = [
+            // Starters
+            { name: "Tomato Basil Soup", category: "Starters", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Crispy Veg Spring Rolls", category: "Starters", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Paneer Tikka", category: "Starters", img: "https://images.unsplash.com/photo-1600628422019-6c1a6c2b1b6b?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Lollipop", category: "Starters", img: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Garlic Bread", category: "Starters", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Fish Fingers", category: "Starters", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            // Salads
+            { name: "Greek Salad", category: "Salads", img: "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Caesar Salad", category: "Salads", img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Sprout Salad", category: "Salads", img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Salad", category: "Salads", img: "https://images.pexels.com/photos/593839/pexels-photo-593839.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Main Course - Veg
+            { name: "Paneer Butter Masala", category: "Main Course - Veg", img: "https://images.unsplash.com/photo-1600628422019-6c1a6c2b1b6b?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Dal Makhani", category: "Main Course - Veg", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Veg Biryani", category: "Main Course - Veg", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Aloo Gobi", category: "Main Course - Veg", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Mushroom Masala", category: "Main Course - Veg", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Mix Veg Curry", category: "Main Course - Veg", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chana Masala", category: "Main Course - Veg", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            // Main Course - Non Veg
+            { name: "Butter Chicken", category: "Main Course - Non Veg", img: "https://images.unsplash.com/photo-1514512364185-4c2b678c5a68?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Biryani", category: "Main Course - Non Veg", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Fish Curry", category: "Main Course - Non Veg", img: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Egg Curry", category: "Main Course - Non Veg", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Mutton Rogan Josh", category: "Main Course - Non Veg", img: "https://images.unsplash.com/photo-1514512364185-4c2b678c5a68?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Korma", category: "Main Course - Non Veg", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Rice & Breads
+            { name: "Steamed Rice", category: "Rice & Breads", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Jeera Rice", category: "Rice & Breads", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Butter Naan", category: "Rice & Breads", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Garlic Naan", category: "Rice & Breads", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Tandoori Roti", category: "Rice & Breads", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Lachha Paratha", category: "Rice & Breads", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Chinese
+            { name: "Veg Hakka Noodles", category: "Chinese", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Fried Rice", category: "Chinese", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chilli Paneer", category: "Chinese", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Veg Manchurian", category: "Chinese", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Manchurian", category: "Chinese", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Spring Roll", category: "Chinese", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Snacks
+            { name: "French Fries", category: "Snacks", img: "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Samosa", category: "Snacks", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Veg Sandwich", category: "Snacks", img: "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Chicken Sandwich", category: "Snacks", img: "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Pav Bhaji", category: "Snacks", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Desserts
+            { name: "Gulab Jamun", category: "Desserts", img: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Rasmalai", category: "Desserts", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Ice Cream (2 scoops)", category: "Desserts", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Brownie with Ice Cream", category: "Desserts", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Fruit Salad", category: "Desserts", img: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            // Beverages
+            { name: "Masala Chai", category: "Beverages", img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Cold Coffee", category: "Beverages", img: "https://images.pexels.com/photos/2611815/pexels-photo-2611815.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Fresh Lime Soda", category: "Beverages", img: "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Mango Lassi", category: "Beverages", img: "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Mineral Water", category: "Beverages", img: "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&w=400&h=120&fit=crop" },
+            { name: "Soft Drinks", category: "Beverages", img: "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&w=400&h=120&fit=crop" }
+        ];
+
+        // Render gallery
+        const galleryGrid = document.getElementById('gallery-grid');
+        menuGallery.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/180x120?text=No+Image';">
+                <div class="gallery-item-name">${item.name}</div>
+                <div class="gallery-item-category">${item.category}</div>
+            `;
+            galleryGrid.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>
