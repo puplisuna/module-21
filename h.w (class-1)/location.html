@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mount Carmel Hill Restaurant - Home</title>
+    <title>Location - Mount Carmel Hill Restaurant</title>
     <style>
         body {
             background: #f6f8fa;
@@ -54,7 +54,13 @@
             margin-bottom: 1.5rem;
         }
 
-        .welcome-letter {
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-section {
             background: #fff;
             max-width: 600px;
             margin: 2rem auto 1.5rem auto;
@@ -66,26 +72,27 @@
             line-height: 1.7;
         }
 
-        .info-section {
+        .map-embed {
+            width: 100%;
+            height: 280px;
+            border: none;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+        }
+
+        .address {
+            font-size: 1.08rem;
+            color: #2d4059;
+            margin-bottom: 1.2rem;
+        }
+
+        .directions {
+            margin-top: 1.5rem;
             background: #f8fafc;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
-            color: #2d4059;
-        }
-
-        h1 {
-            color: #2d4059;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            color: #5c7aea;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
         }
 
         footer {
@@ -99,15 +106,17 @@
         }
 
         @media (max-width: 700px) {
-
-            .welcome-letter,
-            .info-section {
+            .location-section {
                 padding: 1rem;
                 margin: 1rem;
             }
 
             nav ul {
                 gap: 1rem;
+            }
+
+            .map-embed {
+                height: 180px;
             }
         }
     </style>
@@ -116,36 +125,43 @@
 <body>
     <nav>
         <ul>
-            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="food-galary.html">Food Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="location.html">Location</a></li>
+            <li><a href="location.html" class="active">Location</a></li>
         </ul>
     </nav>
     <header>
-        <h1>Welcome to Mount Carmel Hill Restaurant</h1>
-        <p style="color:#6c757d;font-size:1.1rem;">A place where tradition meets taste, and every meal is a memory.</p>
+        <h1>Our Location</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">Find us at the heart of the city, nestled on a scenic hilltop.</p>
     </header>
-    <section class="welcome-letter">
-        <p>
-            Dear Guest,<br><br>
-            Welcome to Mount Carmel Hill Restaurant! We are delighted to have you with us. Our passion is to serve you
-            the finest dishes in a cozy, serene environment inspired by the beauty of the hills. Whether you are here
-            for a family dinner, a friendly gathering, or a quiet meal, we promise a memorable culinary experience with
-            every visit.<br><br>
-            Enjoy your time and let us take care of the rest!
-        </p>
-    </section>
-    <section class="info-section">
-        <h2>About Our Restaurant</h2>
-        <p>
-            Mount Carmel Hill Restaurant is known for its warm hospitality, fresh ingredients, and a menu that
-            celebrates both local and international flavors. Our chefs craft each dish with care, ensuring a delightful
-            experience for every guest. We invite you to explore our menu, enjoy our food gallery, and feel free to
-            contact us for reservations or special requests.
-        </p>
+    <section class="location-section">
+        <div class="address">
+            <strong>Mount Carmel Hill Restaurant</strong><br>
+            123 Hilltop Avenue,<br>
+            Near Green Park,<br>
+            Cityville, State 123456<br>
+            India
+        </div>
+        <iframe class="map-embed"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.5946%2C12.9716%2C77.5946%2C12.9716&amp;layer=mapnik"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="directions">
+            <strong>How to Reach Us:</strong>
+            <ul>
+                <li><b>From City Center Bus Stand:</b> Take the Green Line bus towards Hilltop. Get down at "Green Park"
+                    stop. The restaurant is a 5-minute walk uphill from the stop.</li>
+                <li><b>From Railway Station:</b> Hire a taxi or auto-rickshaw to "Mount Carmel Hill Restaurant, Hilltop
+                    Avenue". The drive takes about 20 minutes.</li>
+                <li><b>By Car:</b> Follow the main road towards Green Park. After the park, take the first right onto
+                    Hilltop Avenue. Free parking is available at the restaurant.</li>
+                <li><b>Landmark:</b> We are right next to the famous Green Park and opposite Cityville Public Library.
+                </li>
+            </ul>
+            <p>For any help with directions, call us at <b>+91 98765 43210</b>.</p>
+        </div>
     </section>
     <footer>
         <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
