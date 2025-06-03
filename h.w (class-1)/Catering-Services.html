@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering Services - Mount Carmel Hill Restaurant</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .catering-section {
+            background: #fff;
+            max-width: 700px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+            font-size: 1.1rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .catering-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .catering-section label {
+            font-weight: 500;
+            color: #2d4059;
+        }
+
+        .catering-section input,
+        .catering-section select,
+        .catering-section textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+
+        .catering-section button {
+            background: #5c7aea;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .catering-section button:hover {
+            background: #3b4cca;
+        }
+
+        .success-message {
+            background: #e3fcec;
+            color: #256029;
+            border: 1px solid #b7ebc6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .error-message {
+            color: #c0392b;
+            background: #ffeaea;
+            border: 1px solid #ffb3b3;
+            border-radius: 6px;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .catering-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="work-with-us.html">Work with Us</a></li>
+            <li><a href="delivary.html">Order Online</a></li>
+            <li><a href="Catering-Services.html" class="active">Catering Services</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Catering Services</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">Book catering for weddings, birthdays, corporate events, and more!
+        </p>
+    </header>
+    <section class="catering-section">
+        <div class="error-message" id="error-message"></div>
+        <form id="catering-form" autocomplete="off">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,}">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="program">Type of Program:</label>
+            <select id="program" name="program" required>
+                <option value="">Select Program</option>
+            </select>
+
+            <label for="date">Event Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="10" max="1000" required>
+
+            <label for="address">Event Address:</label>
+            <textarea id="address" name="address" rows="2" required></textarea>
+
+            <label for="requests">Special Requests (optional):</label>
+            <textarea id="requests" name="requests" rows="2" placeholder="Any special requests?"></textarea>
+
+            <button type="submit">Book Catering</button>
+        </form>
+        <div class="success-message" id="success-message"></div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // 50+ program types
+        const programTypes = [
+            "Wedding", "Birthday Party", "Anniversary", "Corporate Event", "Baby Shower", "Engagement", "Retirement Party", "Housewarming", "Farewell Party", "Reunion",
+            "Festival Celebration", "Naming Ceremony", "Kitty Party", "Bridal Shower", "Bachelor Party", "School Function", "College Fest", "Award Ceremony", "Product Launch", "Press Meet",
+            "Charity Event", "Religious Function", "Community Gathering", "Sports Event", "Music Concert", "Dance Show", "Fashion Show", "Book Launch", "Art Exhibition", "Film Screening",
+            "Workshop", "Seminar", "Conference", "Team Building", "Picnic", "Family Get-together", "Theme Party", "New Year Party", "Christmas Party", "Diwali Party", "Eid Celebration",
+            "Puja", "Sangeet", "Haldi", "Reception", "Pool Party", "Cocktail Party", "Networking Event", "Inauguration", "Baby Naming", "Other", "Food Festival", "Cultural Night", "Alumni Meet", "Sports Award Night", "Open House", "Community Feast"
+        ];
+
+        // Populate program dropdown
+        const programSelect = document.getElementById('program');
+        programTypes.forEach(type => {
+            const opt = document.createElement('option');
+            opt.value = type;
+            opt.textContent = type;
+            programSelect.appendChild(opt);
+        });
+
+        // Set min date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Form validation and submission
+        const form = document.getElementById('catering-form');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('success-message');
+
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            const name = form.name.value.trim();
+            const phone = form.phone.value.trim();
+            const email = form.email.value.trim();
+            const program = form.program.value;
+            const date = form.date.value;
+            const guests = form.guests.value;
+            const address = form.address.value.trim();
+
+            if (!/^[a-zA-Z ]{3,}$/.test(name)) {
+                showError("Please enter a valid name.");
+                form.name.focus();
+                return;
+            }
+            if (!/^[0-9]{10,}$/.test(phone)) {
+                showError("Please enter a valid 10-digit phone number.");
+                form.phone.focus();
+                return;
+            }
+            if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+                showError("Please enter a valid email address.");
+                form.email.focus();
+                return;
+            }
+            if (!program) {
+                showError("Please select a program type.");
+                form.program.focus();
+                return;
+            }
+            const today = new Date();
+            const selectedDate = new Date(date);
+            if (selectedDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+                showError("Event date cannot be in the past.");
+                form.date.focus();
+                return;
+            }
+            if (guests < 10 || guests > 1000) {
+                showError("Number of guests must be between 10 and 1000.");
+                form.guests.focus();
+                return;
+            }
+            if (address.length < 5) {
+                showError("Please enter a valid event address.");
+                form.address.focus();
+                return;
+            }
+
+            successDiv.textContent = "Thank you! Your catering request has been received. We will contact you soon.";
+            successDiv.style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 8000);
+        };
+
+        function showError(msg) {
+            errorDiv.textContent = msg;
+            errorDiv.style.display = 'block';
+        }
+
+        // UX: highlight active input
+        Array.from(form.elements).forEach(el => {
+            el.addEventListener('focus', function () {
+                this.style.borderColor = '#5c7aea';
+            });
+            el.addEventListener('blur', function () {
+                this.style.borderColor = '#eaeaea';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online - Mount Carmel Hill Restaurant</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-section {
+            background: #fff;
+            max-width: 900px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            background: #2d4059;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        .menu-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .menu-category h2 {
+            color: #5c7aea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e3eafc;
+            padding-bottom: 0.3rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .menu-item {
+            background: #f6f8fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
+            padding: 1rem 1rem 0.7rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 120px;
+            position: relative;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: #2d4059;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.97rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            font-weight: 500;
+            color: #5c7aea;
+            margin-top: auto;
+        }
+
+        .add-btn {
+            background: #5c7aea;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.4rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            transition: background 0.2s;
+        }
+
+        .add-btn:hover {
+            background: #3b4cca;
+        }
+
+        .cart-section {
+            background: #f8fafc;
+            max-width: 500px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            color: #2d4059;
+        }
+
+        .cart-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cart-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .cart-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.7rem;
+            font-size: 1.05rem;
+        }
+
+        .cart-list .cart-qty {
+            margin: 0 0.7rem;
+            font-weight: 500;
+        }
+
+        .cart-remove {
+            background: #ff4d4f;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+        .cart-remove:hover {
+            background: #c0392b;
+        }
+
+        .cart-total {
+            font-weight: 600;
+            color: #217dbb;
+            margin-bottom: 1rem;
+        }
+
+        .order-form label {
+            font-weight: 500;
+            color: #2d4059;
+        }
+
+        .order-form input,
+        .order-form textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .order-btn {
+            background: #5c7aea;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .order-btn:hover {
+            background: #3b4cca;
+        }
+
+        .order-success {
+            background: #e3fcec;
+            color: #256029;
+            border: 1px solid #b7ebc6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+
+            .order-section,
+            .cart-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="work-with-us.html">Work with Us</a></li>
+            <li><a href="delivary.html" class="active">Order Online</a></li>
+            <li><a href="Catering-Services.html">Catering Services</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Order Online</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">Select your favorite dishes and get them delivered to your doorstep!
+        </p>
+    </header>
+    <section class="order-section">
+        <div class="category-list" id="category-list"></div>
+        <div id="menu-content"></div>
+    </section>
+    <section class="cart-section" id="cart-section" style="display:none;">
+        <div class="cart-title">Your Cart</div>
+        <ul class="cart-list" id="cart-list"></ul>
+        <div class="cart-total" id="cart-total"></div>
+        <form class="order-form" id="order-form">
+            <label for="customer-name">Name:</label>
+            <input type="text" id="customer-name" required>
+            <label for="customer-phone">Phone Number:</label>
+            <input type="tel" id="customer-phone" required pattern="[0-9]{10,}">
+            <label for="customer-address">Delivery Address:</label>
+            <textarea id="customer-address" rows="2" required></textarea>
+            <button type="submit" class="order-btn">Place Order</button>
+        </form>
+        <div class="order-success" id="order-success"></div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Menu data (same as menu.html)
+        const menuData = [
+            {
+                category: "Starters",
+                items: [
+                    { name: "Tomato Basil Soup", desc: "Fresh tomatoes, basil, and cream.", price: 120 },
+                    { name: "Crispy Veg Spring Rolls", desc: "Stuffed with fresh veggies.", price: 140 },
+                    { name: "Paneer Tikka", desc: "Grilled cottage cheese with spices.", price: 180 },
+                    { name: "Chicken Lollipop", desc: "Spicy fried chicken wings.", price: 200 },
+                    { name: "Garlic Bread", desc: "Toasted bread with garlic butter.", price: 90 },
+                    { name: "Fish Fingers", desc: "Crispy fried fish sticks.", price: 220 },
+                ]
+            },
+            {
+                category: "Salads",
+                items: [
+                    { name: "Greek Salad", desc: "Feta, olives, cucumber, tomato.", price: 150 },
+                    { name: "Caesar Salad", desc: "Romaine, parmesan, croutons.", price: 160 },
+                    { name: "Sprout Salad", desc: "Healthy mixed sprouts.", price: 110 },
+                    { name: "Chicken Salad", desc: "Grilled chicken, greens, vinaigrette.", price: 180 },
+                ]
+            },
+            {
+                category: "Main Course - Veg",
+                items: [
+                    { name: "Paneer Butter Masala", desc: "Cottage cheese in creamy tomato gravy.", price: 220 },
+                    { name: "Dal Makhani", desc: "Slow-cooked black lentils.", price: 180 },
+                    { name: "Veg Biryani", desc: "Aromatic rice with mixed veggies.", price: 200 },
+                    { name: "Aloo Gobi", desc: "Potato and cauliflower curry.", price: 160 },
+                    { name: "Mushroom Masala", desc: "Mushrooms in spicy gravy.", price: 190 },
+                    { name: "Mix Veg Curry", desc: "Seasonal vegetables in curry.", price: 170 },
+                    { name: "Chana Masala", desc: "Chickpeas in tangy gravy.", price: 160 },
+                ]
+            },
+            {
+                category: "Main Course - Non Veg",
+                items: [
+                    { name: "Butter Chicken", desc: "Classic creamy chicken curry.", price: 260 },
+                    { name: "Chicken Biryani", desc: "Fragrant rice with chicken.", price: 240 },
+                    { name: "Fish Curry", desc: "Fish cooked in coconut gravy.", price: 280 },
+                    { name: "Egg Curry", desc: "Boiled eggs in spicy gravy.", price: 170 },
+                    { name: "Mutton Rogan Josh", desc: "Kashmiri style mutton curry.", price: 320 },
+                    { name: "Chicken Korma", desc: "Chicken in creamy sauce.", price: 250 },
+                ]
+            },
+            {
+                category: "Rice & Breads",
+                items: [
+                    { name: "Steamed Rice", desc: "Simple and fluffy.", price: 90 },
+                    { name: "Jeera Rice", desc: "Rice with cumin seeds.", price: 110 },
+                    { name: "Butter Naan", desc: "Soft Indian bread.", price: 50 },
+                    { name: "Garlic Naan", desc: "Naan with garlic topping.", price: 60 },
+                    { name: "Tandoori Roti", desc: "Whole wheat bread.", price: 40 },
+                    { name: "Lachha Paratha", desc: "Layered flaky bread.", price: 55 },
+                ]
+            },
+            {
+                category: "Chinese",
+                items: [
+                    { name: "Veg Hakka Noodles", desc: "Stir-fried noodles with veggies.", price: 160 },
+                    { name: "Chicken Fried Rice", desc: "Rice with chicken and veggies.", price: 180 },
+                    { name: "Chilli Paneer", desc: "Paneer tossed in spicy sauce.", price: 190 },
+                    { name: "Veg Manchurian", desc: "Veg balls in tangy sauce.", price: 170 },
+                    { name: "Chicken Manchurian", desc: "Chicken balls in sauce.", price: 200 },
+                    { name: "Spring Roll", desc: "Crispy rolls with veggies.", price: 140 },
+                ]
+            },
+            {
+                category: "Snacks",
+                items: [
+                    { name: "French Fries", desc: "Crispy golden fries.", price: 90 },
+                    { name: "Samosa", desc: "Spiced potato filling.", price: 40 },
+                    { name: "Veg Sandwich", desc: "Fresh veggies and cheese.", price: 80 },
+                    { name: "Chicken Sandwich", desc: "Chicken and mayo.", price: 110 },
+                    { name: "Pav Bhaji", desc: "Spicy mashed veggies with bread.", price: 120 },
+                ]
+            },
+            {
+                category: "Desserts",
+                items: [
+                    { name: "Gulab Jamun", desc: "Soft sweet dumplings.", price: 70 },
+                    { name: "Rasmalai", desc: "Cottage cheese in sweet milk.", price: 90 },
+                    { name: "Ice Cream (2 scoops)", desc: "Choice of vanilla, chocolate, strawberry.", price: 80 },
+                    { name: "Brownie with Ice Cream", desc: "Warm brownie, vanilla ice cream.", price: 120 },
+                    { name: "Fruit Salad", desc: "Seasonal fruits.", price: 70 },
+                ]
+            },
+            {
+                category: "Beverages",
+                items: [
+                    { name: "Masala Chai", desc: "Spiced Indian tea.", price: 40 },
+                    { name: "Cold Coffee", desc: "Chilled coffee with ice cream.", price: 70 },
+                    { name: "Fresh Lime Soda", desc: "Sweet or salted.", price: 50 },
+                    { name: "Mango Lassi", desc: "Sweet mango yogurt drink.", price: 60 },
+                    { name: "Mineral Water", desc: "500ml bottle.", price: 20 },
+                    { name: "Soft Drinks", desc: "Choice of Coke, Sprite, etc.", price: 40 },
+                ]
+            }
+        ];
+
+        // Cart logic
+        let cart = [];
+
+        // Render categories
+        const categories = menuData.map(cat => cat.category);
+        const categoryList = document.getElementById('category-list');
+        categories.forEach((cat, idx) => {
+            const btn = document.createElement('button');
+            btn.textContent = cat;
+            btn.className = 'category-btn' + (idx === 0 ? ' active' : '');
+            btn.onclick = () => showCategory(cat, btn);
+            categoryList.appendChild(btn);
+        });
+
+        // Render menu items for a category
+        function showCategory(category, btn) {
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const catData = menuData.find(c => c.category === category);
+            const menuContent = document.getElementById('menu-content');
+            menuContent.innerHTML = `
+                <div class="menu-category">
+                    <h2>${catData.category}</h2>
+                    <div class="menu-items">
+                        ${catData.items.map((item, idx) => `
+                            <div class="menu-item">
+                                <div class="menu-item-name">${item.name}</div>
+                                <div class="menu-item-desc">${item.desc}</div>
+                                <div class="menu-item-price">₹${item.price}</div>
+                                <button class="add-btn" onclick="addToCart('${catData.category}',${idx})">Add</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show first category by default
+        showCategory(categories[0], categoryList.querySelector('.category-btn'));
+
+        // Add to cart function (global for inline onclick)
+        window.addToCart = function (category, idx) {
+            const catData = menuData.find(c => c.category === category);
+            const item = catData.items[idx];
+            const cartIdx = cart.findIndex(ci => ci.name === item.name);
+            if (cartIdx > -1) {
+                cart[cartIdx].qty += 1;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+            updateCart();
+        };
+
+        // Remove from cart
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            updateCart();
+        }
+
+        // Update cart UI
+        function updateCart() {
+            const cartSection = document.getElementById('cart-section');
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+            if (cart.length === 0) {
+                cartSection.style.display = 'none';
+                return;
+            }
+            cartSection.style.display = 'block';
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, idx) => {
+                total += item.price * item.qty;
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>
+                        <button class="cart-remove" onclick="changeQty(${idx},-1)">-</button>
+                        <span class="cart-qty">${item.qty}</span>
+                        <button class="cart-remove" onclick="changeQty(${idx},1)">+</button>
+                        ₹${item.price * item.qty}
+                        <button class="cart-remove" onclick="removeFromCart(${idx})">x</button>
+                    </span>
+                `;
+                cartList.appendChild(li);
+            });
+            cartTotal.textContent = "Total: ₹" + total;
+        }
+
+        // Change quantity
+        window.changeQty = function (idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) removeFromCart(idx);
+            else updateCart();
+        };
+
+        window.removeFromCart = removeFromCart;
+
+        // Order form logic
+        document.getElementById('order-form').onsubmit = function (e) {
+            e.preventDefault();
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            const address = document.getElementById('customer-address').value.trim();
+            const orderSuccess = document.getElementById('order-success');
+            if (!/^[a-zA-Z ]{3,}$/.test(name)) {
+                orderSuccess.style.display = 'block';
+                orderSuccess.style.color = '#c0392b';
+                orderSuccess.style.background = '#ffeaea';
+                orderSuccess.textContent = "Please enter a valid name.";
+                return;
+            }
+            if (!/^[0-9]{10,}$/.test(phone)) {
+                orderSuccess.style.display = 'block';
+                orderSuccess.style.color = '#c0392b';
+                orderSuccess.style.background = '#ffeaea';
+                orderSuccess.textContent = "Please enter a valid 10-digit phone number.";
+                return;
+            }
+            if (address.length < 5) {
+                orderSuccess.style.display = 'block';
+                orderSuccess.style.color = '#c0392b';
+                orderSuccess.style.background = '#ffeaea';
+                orderSuccess.textContent = "Please enter a valid address.";
+                return;
+            }
+            orderSuccess.style.display = 'block';
+            orderSuccess.style.color = '#256029';
+            orderSuccess.style.background = '#e3fcec';
+            orderSuccess.textContent = "Thank you! Your order has been placed. We will deliver your food soon.";
+            // Reset cart and form
+            cart = [];
+            updateCart();
+            document.getElementById('order-form').reset();
+            setTimeout(() => {
+                orderSuccess.style.display = 'none';
+            }, 7000);
+        };
+    </script>
+</body>
+
+</html>

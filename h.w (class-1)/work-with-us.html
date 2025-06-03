@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us - Mount Carmel Hill Restaurant</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-section {
+            background: #fff;
+            max-width: 600px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+            font-size: 1.1rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .work-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .work-section label {
+            font-weight: 500;
+            color: #2d4059;
+        }
+
+        .work-section input,
+        .work-section select,
+        .work-section textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+
+        .work-section button {
+            background: #5c7aea;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .work-section button:hover {
+            background: #3b4cca;
+        }
+
+        .question-block {
+            margin-bottom: 1.2rem;
+        }
+
+        .question-block label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message {
+            background: #e3fcec;
+            color: #256029;
+            border: 1px solid #b7ebc6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .error-message {
+            color: #c0392b;
+            background: #ffeaea;
+            border: 1px solid #ffb3b3;
+            border-radius: 6px;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+            .work-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="work-with-us.html" class="active">Work With Us</a></li>
+            <li><a href="delivary.html">order online</a></li>
+            <li><a href="Catering-Services.html">Catering Services</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Work With Us</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">Apply online to join our team as a Chef, Waiter, or Cash Counter
+            Manager!</p>
+    </header>
+    <section class="work-section">
+        <div class="error-message" id="error-message"></div>
+        <form id="interview-form" autocomplete="off">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,}">
+
+            <label for="position">Position Applying For:</label>
+            <select id="position" name="position" required>
+                <option value="">Select Position</option>
+                <option value="Chef">Chef</option>
+                <option value="Waiter">Waiter</option>
+                <option value="Cash Counter Manager">Cash Counter Manager</option>
+            </select>
+
+            <div id="questions-area"></div>
+
+            <button type="submit">Submit Interview</button>
+        </form>
+        <div class="success-message" id="success-message"></div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Interview questions for each position
+        const questions = {
+            "Chef": [
+                "What cuisines are you most experienced with?",
+                "Describe your experience in a professional kitchen.",
+                "How do you handle pressure during busy hours?",
+                "Share a signature dish you love to prepare."
+            ],
+            "Waiter": [
+                "Do you have previous experience as a waiter?",
+                "How would you handle a difficult customer?",
+                "What does good customer service mean to you?",
+                "Are you comfortable working flexible hours?"
+            ],
+            "Cash Counter Manager": [
+                "Do you have experience handling cash and billing?",
+                "How do you ensure accuracy in transactions?",
+                "Describe a time you resolved a billing dispute.",
+                "Are you familiar with POS (Point of Sale) systems?"
+            ]
+        };
+
+        const form = document.getElementById('interview-form');
+        const positionSelect = document.getElementById('position');
+        const questionsArea = document.getElementById('questions-area');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('success-message');
+
+        // Dynamically load questions based on position
+        positionSelect.addEventListener('change', function () {
+            questionsArea.innerHTML = '';
+            const pos = this.value;
+            if (questions[pos]) {
+                questions[pos].forEach((q, idx) => {
+                    const block = document.createElement('div');
+                    block.className = 'question-block';
+                    block.innerHTML = `
+                        <label for="q${idx}">${q}</label>
+                        <textarea id="q${idx}" name="q${idx}" rows="2" required></textarea>
+                    `;
+                    questionsArea.appendChild(block);
+                });
+            }
+        });
+
+        // Form validation and submission
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            // Basic validation
+            const name = form.fullname.value.trim();
+            const email = form.email.value.trim();
+            const phone = form.phone.value.trim();
+            const position = form.position.value;
+
+            if (!/^[a-zA-Z ]{3,}$/.test(name)) {
+                showError("Please enter a valid full name.");
+                form.fullname.focus();
+                return;
+            }
+            if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+                showError("Please enter a valid email address.");
+                form.email.focus();
+                return;
+            }
+            if (!/^[0-9]{10,}$/.test(phone)) {
+                showError("Please enter a valid 10-digit phone number.");
+                form.phone.focus();
+                return;
+            }
+            if (!position) {
+                showError("Please select a position.");
+                form.position.focus();
+                return;
+            }
+            // Check all questions answered
+            const textareas = questionsArea.querySelectorAll('textarea');
+            for (let ta of textareas) {
+                if (ta.value.trim().length < 5) {
+                    showError("Please answer all interview questions with at least 5 characters.");
+                    ta.focus();
+                    return;
+                }
+            }
+
+            // Simulate submission
+            successDiv.textContent = "Thank you for your interest! Your online interview has been submitted. We will contact you soon.";
+            successDiv.style.display = 'block';
+            form.reset();
+            questionsArea.innerHTML = '';
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 8000);
+        };
+
+        function showError(msg) {
+            errorDiv.textContent = msg;
+            errorDiv.style.display = 'block';
+        }
+
+        // UX: highlight active input
+        Array.from(form.elements).forEach(el => {
+            el.addEventListener('focus', function () {
+                this.style.borderColor = '#5c7aea';
+            });
+            el.addEventListener('blur', function () {
+                this.style.borderColor = '#eaeaea';
+            });
+        });
+    </script>
+</body>
+
+</html>

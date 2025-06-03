@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - Mount Carmel Hill Restaurant</title>
+    <style>
+        body {
+            background: #f6f8fa;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #222;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #5c7aea;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            color: #2d4059;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reservation-section {
+            background: #fff;
+            max-width: 600px;
+            margin: 2rem auto 1.5rem auto;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+            font-size: 1.1rem;
+            color: #374151;
+            line-height: 1.7;
+        }
+
+        .reservation-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .reservation-section label {
+            font-weight: 500;
+            color: #2d4059;
+        }
+
+        .reservation-section input,
+        .reservation-section select,
+        .reservation-section textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+
+        .reservation-section button {
+            background: #5c7aea;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .reservation-section button:hover {
+            background: #3b4cca;
+        }
+
+        .reservation-success {
+            background: #e3fcec;
+            color: #256029;
+            border: 1px solid #b7ebc6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .error-message {
+            color: #c0392b;
+            background: #ffeaea;
+            border: 1px solid #ffb3b3;
+            border-radius: 6px;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #fff;
+            color: #6c757d;
+            text-align: center;
+            padding: 1.2rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: auto;
+        }
+
+        @media (max-width: 700px) {
+            .reservation-section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="food-galary.html">Food Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="reservation.html" class="active">Reservation</a></li>
+            <li><a href="work-with-us.html">Work with Us</a></li>
+            <li><a href="delivary.html">order online</a></li>
+            <li><a href="Catering-Services.html">Catering Services</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Reserve Your Table</h1>
+        <p style="color:#6c757d;font-size:1.1rem;">Book a table for your party, family dining, couple date, or a single
+            dine experience.</p>
+    </header>
+    <section class="reservation-section">
+        <div class="error-message" id="error-message"></div>
+        <form id="reservation-form" autocomplete="off">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,}">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="type">Reservation Type:</label>
+            <select id="type" name="type" required>
+                <option value="">Select Type</option>
+                <option value="Party">Party</option>
+                <option value="Family Dining">Family Dining</option>
+                <option value="Couple Date">Couple Date</option>
+                <option value="Single Dine">Single Dine</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="1" max="30" required>
+
+            <label for="requests">Special Requests (optional):</label>
+            <textarea id="requests" name="requests" rows="2" placeholder="Any special requests?"></textarea>
+
+            <button type="submit">Book Table</button>
+        </form>
+        <div class="reservation-success" id="reservation-success">
+            Thank you! Your reservation has been received.<br>
+            We look forward to serving you at Mount Carmel Hill Restaurant.
+        </div>
+    </section>
+    <footer>
+        <p>built with love and curiosity &copy; 2025 Ohom Bhattacharjee. All rights reserved.</p>
+    </footer>
+    <script>
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Extra JS: validation, phone/email check, and UX improvements
+        const form = document.getElementById('reservation-form');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('reservation-success');
+
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            // Validation
+            const name = form.name.value.trim();
+            const phone = form.phone.value.trim();
+            const email = form.email.value.trim();
+            const type = form.type.value;
+            const date = form.date.value;
+            const time = form.time.value;
+            const guests = form.guests.value;
+
+            // Phone validation
+            if (!/^[0-9]{10,}$/.test(phone)) {
+                showError("Please enter a valid 10-digit phone number.");
+                form.phone.focus();
+                return;
+            }
+
+            // Email validation
+            if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+                showError("Please enter a valid email address.");
+                form.email.focus();
+                return;
+            }
+
+            // Date validation (no past dates)
+            const today = new Date();
+            const selectedDate = new Date(date);
+            if (selectedDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+                showError("Reservation date cannot be in the past.");
+                form.date.focus();
+                return;
+            }
+
+            // Time validation (optional: only allow between 11:00 and 22:30)
+            if (time < "11:00" || time > "22:30") {
+                showError("Reservation time must be between 11:00 AM and 10:30 PM.");
+                form.time.focus();
+                return;
+            }
+
+            // Guests validation
+            if (guests < 1 || guests > 30) {
+                showError("Number of guests must be between 1 and 30.");
+                form.guests.focus();
+                return;
+            }
+
+            // If all good, show success
+            successDiv.style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 7000);
+        };
+
+        function showError(msg) {
+            errorDiv.textContent = msg;
+            errorDiv.style.display = 'block';
+        }
+
+        // UX: highlight active input
+        Array.from(form.elements).forEach(el => {
+            el.addEventListener('focus', function () {
+                this.style.borderColor = '#5c7aea';
+            });
+            el.addEventListener('blur', function () {
+                this.style.borderColor = '#eaeaea';
+            });
+        });
+    </script>
+</body>
+
+</html>
