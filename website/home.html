@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home--website</title>
+    <style>
+        nav {
+    background: #000;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: #ffd600;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1.08rem;
+    letter-spacing: 0.02em;
+}
+
+nav a.active,
+nav a:hover {
+    background: #ffd600;
+    color: #000;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html"  class="active">home</a></li>
+            <li><a href="about.html">About_us</a></li>
+            <li><a href="gallery.html">gallery</a></li>
+            <li><a href="contact.html">Contact_us</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <img class="myslides" src="https://wallpapers.com/images/featured/8k-ultra-hd-nature-prdfm720u6780jl5.jpg" alt="🔓" style="height: 500px;">
+        <img class="myslides" src="https://i.pinimg.com/736x/24/3d/25/243d2509f1657c6addbddbdba212492e.jpg" alt="🔓" style="height: 500px;">
+        <img class="myslides" src="https://as2.ftcdn.net/v2/jpg/06/79/73/21/1000_F_679732126_LaCAJb3iuGPb2Xt5Uv7olo8CxnOxqXC5.jpg" alt="🔓" style="height: 500px;">
+        <img class="myslides" src="https://static.vecteezy.com/system/resources/thumbnails/047/149/500/small/crystal-clear-water-droplet-close-up-on-leaf-with-copy-spacerealistic-8k-resolution-image-photo.jpg" alt="🔓" style="height: 500px;">
+        <img class="myslides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS79gYeuu6BjM02veEnhTE7bvYzh8jn0uoNiQ&s" alt="🔓" style="height: 500px;">
+    </section>
+
+    <script>
+        var myindex = 0;
+        carousel();
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("myslides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            myindex++;
+            if (myindex > x.length) {myindex = 1}    
+            x[myindex-1].style.display = "block";  
+            setTimeout(carousel, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+</html>
