@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Explore Wings</title>
+    <style>
+        nav a {
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover {
+            background: #fff;
+            color: #2196f3 !important;
+            border-radius: 6px;
+            padding: 6px 16px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(33, 150, 243, 0.12);
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto 32px auto;
+            padding: 32px 24px;
+        }
+
+        .contact-title {
+            color: #1565c0;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .contact-details {
+            color: #333;
+            font-size: 1.08em;
+            margin-bottom: 24px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #b3c6e0;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: #2196f3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: #1565c0;
+        }
+
+        .success-message {
+            color: #388e3c;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body
+    style="margin:0; font-family: Arial, sans-serif; min-height:100vh; background: linear-gradient(to bottom, #2196f3 0%, #ffffff 100%);">
+
+    <!-- Navbar -->
+    <nav
+        style="background: rgba(33,150,243,0.9); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 1.5em; color: #fff; font-weight: bold;">Explore Wings</div>
+        <div>
+            <a href="home.html" style="color: #fff; text-decoration: none; margin: 0 16px;">Home</a>
+            
+            <a href="contact.html" style="color: #fff; text-decoration: none; margin: 0 16px;">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section style="padding: 48px 0; display: flex; flex-direction: column; align-items: center;">
+        <div class="contact-card">
+            <div class="contact-title"><strong>Contact Us</strong></div>
+            <div class="contact-details" id="contactDetails">
+                <strong>Email:</strong> <span id="emailText">support@explorewings.demo</span><br>
+                <strong>Phone:</strong> <span id="phoneText">+1 234 567 8901</span><br>
+                <strong>Address:</strong> <span id="addressText">123 Explorer Avenue, Downtown City, Country
+                    10001</span><br>
+                <em>Note: This is a demo website. All contact details are fictional.</em>
+            </div>
+            <form class="contact-form" id="contactForm" onsubmit="return sendMessage(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+                <div id="form-message"></div>
+            </form>
+            <button id="copyEmailBtn"
+                style="margin-top:10px; background:#fff; color:#2196f3; border:1px solid #2196f3; border-radius:6px; padding:6px 14px; cursor:pointer;">Copy
+                Email</button>
+            <button id="showPhoneBtn"
+                style="margin-top:10px; background:#fff; color:#2196f3; border:1px solid #2196f3; border-radius:6px; padding:6px 14px; cursor:pointer;">Show
+                Phone</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        style="background: rgba(33,150,243,0.8); color: #fff; text-align: center; padding: 16px 0; position: fixed; width: 100%; bottom: 0;">
+        &copy; 2025 Explore Wings. All rights reserved.
+    </footer>
+
+    <script>
+        // Form validation and demo submission
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const msgDiv = document.getElementById('form-message');
+            msgDiv.innerHTML = "";
+
+            // Extra JS validation
+            if (name.length < 2) {
+                showError("Name must be at least 2 characters.");
+                return false;
+            }
+            if (!validateEmail(email)) {
+                showError("Please enter a valid email address.");
+                return false;
+            }
+            if (message.length < 10) {
+                showError("Message must be at least 10 characters.");
+                return false;
+            }
+
+            // Save to localStorage (demo)
+            let messages = JSON.parse(localStorage.getItem('contactMessages') || "[]");
+            messages.push({ name, email, message, date: new Date().toISOString() });
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+            showSuccess("Thank you for contacting us! (Demo only)");
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                msgDiv.innerHTML = '';
+            }, 3500);
+            return false;
+        }
+
+        function showError(msg) {
+            document.getElementById('form-message').innerHTML = `<div class="error-message">${msg}</div>`;
+        }
+        function showSuccess(msg) {
+            document.getElementById('form-message').innerHTML = `<div class="success-message">${msg}</div>`;
+        }
+        function validateEmail(email) {
+            // Simple email regex
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Copy email to clipboard
+        document.getElementById('copyEmailBtn').addEventListener('click', function () {
+            const email = document.getElementById('emailText').innerText;
+            navigator.clipboard.writeText(email).then(function () {
+                alert("Email address copied to clipboard!");
+            });
+        });
+
+        // Show phone number in alert
+        document.getElementById('showPhoneBtn').addEventListener('click', function () {
+            const phone = document.getElementById('phoneText').innerText;
+            alert("Our phone number: " + phone + "\n(This is a demo website.)");
+        });
+
+        // Autofill demo for returning users
+        document.addEventListener('DOMContentLoaded', function () {
+            const lastMsg = JSON.parse(localStorage.getItem('contactMessages') || "[]").slice(-1)[0];
+            if (lastMsg) {
+                document.getElementById('name').value = lastMsg.name;
+                document.getElementById('email').value = lastMsg.email;
+            }
+        });
+    </script>
+</body>
+
+</html>
